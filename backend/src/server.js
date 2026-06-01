@@ -9,7 +9,7 @@ const rateLimit = require("express-rate-limit");
 const { globalErrorHandler } = require("./utils/errors");
 const { initWebSocket } = require("./utils/websocket");
 const { runMigrations } = require("./migrations/run");
-const { runSeed } = require("./migrations/seed");
+// const { runSeed } = require("./migrations/seed");
 const { getRedisClient } = require("./config/redis");
 
 const authRoutes = require("./routes/auth.routes");
@@ -98,7 +98,7 @@ const startServer = async () => {
   while (retries > 0) {
     try {
       await runMigrations();
-      await runSeed();
+      // await runSeed();
       break;
     } catch (err) {
       retries--;
